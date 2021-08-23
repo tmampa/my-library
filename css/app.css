@@ -1,4 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
 h1 {
-  width: 100%;
-	height: 100%;
+  font-family: "Cinzel";
+  font-weight: 700;
+  width: 30%;
+  min-width: 220px;
+  margin: auto;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  background-color: rgb(18, 170, 81);
+  border-bottom: 5px solid #e9967a;
+  border-top: 5px solid #e9967a;
+  padding: 20px;
+  color: white;
+}
+
+/* *********** SECTION BOOKSHELF *********** */
+
+.bookshelf {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.bookshelf > div:nth-child(even) {
+  background-color: rgba(71, 61, 139, 0.055);
+}
+
+.divBook {
+  color: rgb(18, 170, 81);
+  text-align: center;
+  min-width: 200px;
+  max-width: 300px;
+  min-height: 200px;
+  max-height: 300px;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 5px;
+  border: 3px solid rgb(18, 170, 81);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.divBook .divBook_bookTitle {
+  font-family: "Cinzel";
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+}
+
+.divBook .divBook_divContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.divBook p {
+  margin: 0px;
+}
+
+.divBook span {
+  font-weight: 600;
+}
+
+.divBook button {
+  background-color: white;
+  height: 30px;
+  border-radius: 15px;
+  outline: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  padding: 0px 10px;
+}
+
+.divBook_buttonDelete {
+  border: 2px solid #e96e45;
+  color: #e96e45;
+}
+
+.divBook_buttonReaded {
+  border: 2px solid rgb(18, 170, 81);
+  margin-left: 10px;
+  color: rgb(18, 170, 81);
+}
+
+.divBook_buttonDelete:hover {
+  background-color: #e96e45;
+  color: white;
+}
+
+.divBook_buttonReaded:hover {
+  background-color: rgb(18, 170, 81);
+  color: white;
+}
+
+.divBook button:hover {
+  cursor: pointer;
+}
+
+#buttonAddBook {
+  display: block;
+  margin: auto;
+  background-color: rgb(18, 170, 81);
+  color: white;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid rgb(18, 170, 81);
+  width: 20%;
+  min-width: 180px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+#buttonAddBook:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(77, 139, 61);
+}
+
+/* *********** SECTION ADD BOOKS *********** */
+
+.addBooks {
+  background-color: rgb(18, 170, 81);
+  color: white;
+  padding: 50px;
+}
+
+.addBooks h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#warning {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.addBooks fieldset {
+  border: none;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 40%;
+  margin: auto;
+}
+
+form > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  outline: none;
+}
+
+input[type="text"] {
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgb(224, 235, 228);
+  color: white;
+  width: 50%;
+  min-width: 200px;
+  transition: all 0.3s;
+}
+
+input[type="text"]:focus {
+  background-color: white;
+  color: rgb(198, 226, 211);
+}
+
+legend {
+  flex-basis: 100%;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+#buttonSubmitBook {
+  display: block;
+  background-color: white;
+  color: rgb(18, 170, 81);
+  font-weight: bold;
+  margin: auto;
+  width: 30%;
+  min-width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid white;
+  transition: all 0.3s;
+  outline: none;
+}
+
+#buttonSubmitBook:hover {
+  cursor: pointer;
+  background-color: rgb(18, 170, 81);
+  color: white;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    width: 100%;
+  }
 }
