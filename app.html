@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <h1>Your Bookshelf</h1>
+    
+    <section class="bookshelf"></section>
+
+    <button id="buttonAddBook">New Book</button>
+    
+    <section class="addBooks">
+        <h2>Enter a new book</h2>
+        <form action="">
+            <p id="warning"></p>
+            <div>
+                <label for="title">Title</label>
+                <input id="title" type="text">
+            </div>
+
+            <div>
+                <label for="author">Author</label>
+                <input id="author" type="text">
+            </div>
+
+            <div>
+                <label for="pages">Pages</label>
+                <input id="pages" type="text">
+            </div>
+            
+            <fieldset>
+                <legend>Is readed?</legend>
+                <div>
+                    <input type="radio" id="readedYes" name="readed">
+                    <label for="readedYes">Yes</label>
+                </div>
+                
+                <div>
+                    <input type="radio" id="readedNo" name="readed">
+                    <label for="readedNo">No</label>
+                </div>
+            </fieldset>
+
+            <button id="buttonSubmitBook">Add Book</button>
+        </form>
+    </section>
+    <script src="scripts/main.js"></script>
+</body>
+</body>
+</html>
