@@ -16,6 +16,7 @@ let myLibraryStringfied = [];
 if (localStorage.getItem('myLibrary')) {
   myLibraryStringfied = localStorage.getItem('myLibrary').split('/');
   myLibrary = myLibraryStringfied.map((book) => JSON.parse(book));
+  // eslint-disable-next-line no-use-before-define
   myLibrary.map((book) => displayBook(book));
   let counter = 0;
   for (let i = 0; i < myLibrary.length; i += 1) {
@@ -44,9 +45,9 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages > 0 ? pages : 'invalid number of pages';
   this.read = read;
-  this.id;
 
   this.info = function () {
+    // eslint-disable-next-line no-nested-ternary
     return (`${this.title} by ${this.author}, ${this.pages}${typeof this.pages === 'number' ? this.pages === 1 ? ' page' : ' pages' : ''}, ${this.read ? 'read' : 'not read yet'}`);
   };
   this.toggleread = function () {
