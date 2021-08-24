@@ -4,8 +4,8 @@ const sectionAddBook = document.querySelector('.addBooks');
 const inputTitle = document.getElementById('title');
 const inputAuthor = document.getElementById('author');
 const inputPages = document.getElementById('pages');
-const inputReadedYes = document.getElementById('readedYes');
-const inputReadedNo = document.getElementById('readedNo');
+const inputreadYes = document.getElementById('readYes');
+const inputreadNo = document.getElementById('readNo');
 const buttonSubmit = document.getElementById('buttonSubmitBook');
 const warning = document.getElementById('warning');
 const buttonAddBook = document.getElementById('buttonAddBook');
@@ -39,18 +39,18 @@ buttonAddBook.addEventListener('click', (event) => {
   }
 });
 
-function Book(title, author, pages, readed) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages > 0 ? pages : 'invalid number of pages';
-  this.readed = readed;
+  this.read = read;
   this.id;
 
   this.info = function () {
-    return (`${this.title} by ${this.author}, ${this.pages}${typeof this.pages === 'number' ? this.pages === 1 ? ' page' : ' pages' : ''}, ${this.readed ? 'readed' : 'not readed yet'}`);
+    return (`${this.title} by ${this.author}, ${this.pages}${typeof this.pages === 'number' ? this.pages === 1 ? ' page' : ' pages' : ''}, ${this.read ? 'read' : 'not read yet'}`);
   };
-  this.toggleReaded = function () {
-    this.readed = !(this.readed);
+  this.toggleread = function () {
+    this.read = !(this.read);
   };
 }
 
@@ -59,7 +59,7 @@ function verifyInputs() {
     !(inputAuthor.value)
         || !(inputPages.value)
         || !(inputTitle.value)) return false;
-  if (!(inputReadedYes.checked) && !(inputReadedNo.checked)) return false;
+  if (!(inputreadYes.checked) && !(inputreadNo.checked)) return false;
   return true;
 }
 
@@ -68,8 +68,8 @@ function clearInputs() {
   inputAuthor.value = '';
   inputPages.value = '';
   warning.textContent = '';
-  if (inputReadedYes.checked) inputReadedYes.checked = false;
-  else inputReadedNo.checked = false;
+  if (inputreadYes.checked) inputreadYes.checked = false;
+  else inputreadNo.checked = false;
 }
 
 function displayBook(book) {
@@ -79,26 +79,26 @@ function displayBook(book) {
   const paraAuthor = document.createElement('p');
   const bookAuthor = document.createElement('span');
   const bookPages = document.createElement('p');
-  const bookReaded = document.createElement('p');
+  const bookread = document.createElement('p');
   const divButtons = document.createElement('div');
   const buttonDelete = document.createElement('button');
-  const buttonReaded = document.createElement('button');
+  const buttonread = document.createElement('button');
 
-  divBook.style.boxShadow = book.readed ? '0px -5px white, 0px -8px #00fa9a' : '0px -5px white, 0px -8px #e9967a';
-  bookReaded.style.borderBottom = book.readed ? '2px solid #00fa9a' : '2px solid #e9967a';
+  divBook.style.boxShadow = book.read ? '0px -5px white, 0px -8px #00fa9a' : '0px -5px white, 0px -8px #e9967a';
+  bookread.style.borderBottom = book.read ? '2px solid #00fa9a' : '2px solid #e9967a';
   divBook.classList.add('divBook');
   bookTitle.classList.add('divBook_bookTitle');
   divContent.classList.add('divBook_divContent');
   buttonDelete.classList.add('divBook_buttonDelete');
-  buttonReaded.classList.add('divBook_buttonReaded');
+  buttonread.classList.add('divBook_buttonread');
 
   bookTitle.textContent = book.title;
   paraAuthor.textContent = 'By ';
   bookAuthor.textContent = book.author;
   bookPages.textContent = `${book.pages} ${book.pages > 1 ? 'pages' : 'page'}`;
-  bookReaded.textContent = `Status: ${book.readed ? 'Readed' : 'Not readed yet'}`;
+  bookread.textContent = `Status: ${book.read ? 'read' : 'Not read yet'}`;
   buttonDelete.textContent = 'Delete';
-  buttonReaded.textContent = 'Change Status';
+  buttonread.textContent = 'Change Status';
 
   buttonDelete.addEventListener('click', () => {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -111,30 +111,30 @@ function displayBook(book) {
     sectionBooks.removeChild(divBook);
   });
 
-  buttonReaded.addEventListener('click', () => {
-    book.readed = !(book.readed);
+  buttonread.addEventListener('click', () => {
+    book.read = !(book.read);
     for (let i = 0; i < myLibrary.length; i++) {
       if (myLibrary[i].id === book.id) {
         const bookParsed = JSON.parse(myLibraryStringfied[i]);
-        bookParsed.readed = !(bookParsed.readed);
+        bookParsed.read = !(bookParsed.read);
         myLibraryStringfied.splice(i, 1, JSON.stringify(bookParsed));
         localStorage.setItem('myLibrary', myLibraryStringfied.join('/'));
       }
     }
     localStorage.setItem('myLibrary', myLibraryStringfied.join('/'));
-    bookReaded.textContent = `Status: ${book.readed ? 'Readed' : 'Not readed yet'}`;
-    divBook.style.boxShadow = book.readed ? '0px -5px white, 0px -8px #00fa9a' : '0px -5px white, 0px -8px #e9967a';
-    bookReaded.style.borderBottom = book.readed ? '3px solid #00fa9a' : '3px solid #e9967a';
+    bookread.textContent = `Status: ${book.read ? 'read' : 'Not read yet'}`;
+    divBook.style.boxShadow = book.read ? '0px -5px white, 0px -8px #00fa9a' : '0px -5px white, 0px -8px #e9967a';
+    bookread.style.borderBottom = book.read ? '3px solid #00fa9a' : '3px solid #e9967a';
   });
 
   paraAuthor.appendChild(bookAuthor);
 
   divContent.appendChild(paraAuthor);
   divContent.appendChild(bookPages);
-  divContent.appendChild(bookReaded);
+  divContent.appendChild(bookread);
 
   divButtons.appendChild(buttonDelete);
-  divButtons.appendChild(buttonReaded);
+  divButtons.appendChild(buttonread);
 
   divBook.appendChild(bookTitle);
   divBook.appendChild(divContent);
@@ -148,10 +148,10 @@ function addBookToLibrary(event) {
 
   if (verifyInputs()) {
     bookCounter++;
-    let readed = false;
-    if (inputReadedYes.checked) readed = true;
+    let read = false;
+    if (inputreadYes.checked) read = true;
 
-    const book = new Book(inputTitle.value, inputAuthor.value, inputPages.value, readed);
+    const book = new Book(inputTitle.value, inputAuthor.value, inputPages.value, read);
     book.id = bookCounter;
 
     myLibrary.push(book);
