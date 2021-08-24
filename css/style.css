@@ -24,8 +24,6 @@ h1 {
   color: white;
 }
 
-/* *********** SECTION BOOKSHELF *********** */
-
 .bookshelf {
   display: flex;
   justify-content: space-evenly;
@@ -141,8 +139,6 @@ form > div {
   background-color: white;
   color: rgb(77, 139, 61);
 }
-
-/* *********** SECTION ADD BOOKS *********** */
 
 .addBooks {
   background-color: rgb(18, 170, 81);
