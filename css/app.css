@@ -5,11 +5,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat";
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
-  font-family: "Cinzel";
+  font-family: 'Cinzel', serif;
   font-weight: 700;
   width: 30%;
   min-width: 220px;
@@ -63,7 +63,7 @@ form > div {
 }
 
 .divBook .divBook_bookTitle {
-  font-family: "Cinzel";
+  font-family: 'Cinzel', serif;
   font-weight: 700;
   font-size: 1.7rem;
   margin-bottom: 20px;
