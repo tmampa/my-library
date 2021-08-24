@@ -18,7 +18,7 @@ if (localStorage.getItem('myLibrary')) {
   myLibrary = myLibraryStringfied.map((book) => JSON.parse(book));
   myLibrary.map((book) => displayBook(book));
   let counter = 0;
-  for (let i = 0; i < myLibrary.length; i++) {
+  for (let i = 0; i < myLibrary.length; i += 1) {
     if (myLibrary[i].id > counter) counter = myLibrary[i].id;
   }
   bookCounter = counter;
@@ -101,7 +101,7 @@ function displayBook(book) {
   buttonread.textContent = 'Change Status';
 
   buttonDelete.addEventListener('click', () => {
-    for (let i = 0; i < myLibrary.length; i++) {
+    for (let i = 0; i < myLibrary.length; i += 1) {
       if (myLibrary[i].id === book.id) {
         myLibrary.splice(i, 1);
         myLibraryStringfied.splice(i, 1);
@@ -113,7 +113,7 @@ function displayBook(book) {
 
   buttonread.addEventListener('click', () => {
     book.read = !(book.read);
-    for (let i = 0; i < myLibrary.length; i++) {
+    for (let i = 0; i < myLibrary.length; i += 1) {
       if (myLibrary[i].id === book.id) {
         const bookParsed = JSON.parse(myLibraryStringfied[i]);
         bookParsed.read = !(bookParsed.read);
@@ -147,7 +147,7 @@ function addBookToLibrary(event) {
   event.preventDefault();
 
   if (verifyInputs()) {
-    bookCounter++;
+    bookCounter += 1;
     let read = false;
     if (inputreadYes.checked) read = true;
 
